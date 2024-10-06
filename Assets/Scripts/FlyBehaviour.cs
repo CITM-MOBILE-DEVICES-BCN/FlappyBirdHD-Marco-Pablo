@@ -62,12 +62,12 @@ public class FlyBehaviour : MonoBehaviour
 
         if (Rb.velocity.y > 0)
         {
-            float DesiredAngle = Mathf.Lerp(transform.rotation.eulerAngles.z, 27, 3.5f);
+            float DesiredAngle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, 27, 0.5f);
             transform.rotation = Quaternion.Euler(0, 0, DesiredAngle);
         }
-        else
+        else if (Rb.velocity.y < 0)
         {
-            float DesiredAngle = Mathf.Lerp(transform.rotation.eulerAngles.z, -90, -Rb.velocity.y/7);
+            float DesiredAngle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, -90, Time.deltaTime * 3.5f);
             transform.rotation = Quaternion.Euler(0, 0, DesiredAngle);
         }
 
@@ -92,7 +92,7 @@ public class FlyBehaviour : MonoBehaviour
 
         AudioManager.instance.PlaySFX("Hit");
         
-        Invoke(nameof(Restart), 1.0f);
+        Invoke(nameof(Restart), 0.3f);
     }
 
     private void Restart()

@@ -19,7 +19,11 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Canvas.SetActive(true);
-        Time.timeScale = 0f;
+        Canvas.GetComponent<Animator>().Play("GameOverEnter");
+        if (Canvas.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("GameOverEnter"))
+        {
+            Time.timeScale = 0;
+        }
     }
 
     public void RestartGame()
