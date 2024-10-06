@@ -5,17 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-   
     public static GameManager Instance;
     [SerializeField] private GameObject Canvas;
-
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-        Time.timeScale = 1f;
+        Time.timeScale = 0.9f;
     }
 
     public void GameOver()

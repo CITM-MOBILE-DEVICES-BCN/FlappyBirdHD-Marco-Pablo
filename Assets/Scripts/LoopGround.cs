@@ -25,4 +25,9 @@ public class LoopGround : MonoBehaviour
             SpriteRenderer.size= StartSize;
         }
     }
+
+    public void Stop()
+    {
+        Speed = 0;
+    }
 }

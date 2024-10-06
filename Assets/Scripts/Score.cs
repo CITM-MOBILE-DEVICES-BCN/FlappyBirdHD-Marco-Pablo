@@ -37,6 +37,7 @@ public class Score : MonoBehaviour
     public void UpdateScore()
     {
         score++;
+        AudioManager.instance.PlaySFX("Score");
         CurrentScoreText.text = score.ToString();
         UpdateHighScore();
     }
