@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] MusicSounds;
-    public Sound[] SFXSounds;
-    public AudioSource MusicSource;
-    public AudioSource SFXSource;
+    public Sound[] musicSounds;
+    public Sound[] soundFX;
+    public AudioSource musicSource;
+    public AudioSource sourceFX;
     public static AudioManager instance;
 
     void Awake()
@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     
     public void PlayMusic(string name)
     {
-        Sound s = System.Array.Find(MusicSounds, sound => sound.name == name);
+        Sound s = System.Array.Find(musicSounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
@@ -33,14 +33,14 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            MusicSource.clip = s.clip;
-            MusicSource.Play();
+            musicSource.clip = s.clip;
+            musicSource.Play();
         }
     }
 
     public void PlaySFX(string name)
     {
-        Sound s = System.Array.Find(SFXSounds, sound => sound.name == name);
+        Sound s = System.Array.Find(soundFX, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
@@ -48,24 +48,24 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            SFXSource.clip = s.clip;
-            SFXSource.PlayOneShot(s.clip);
+            sourceFX.clip = s.clip;
+            sourceFX.PlayOneShot(s.clip);
         }
     }
 
     public void StopMusic()
     {
-        MusicSource.Stop();
+        musicSource.Stop();
     }
 
     public void StopSFX()
     {
-        SFXSource.Stop();
+        sourceFX.Stop();
     }
 
     public void StopAll()
     {
-        MusicSource.Stop();
-        SFXSource.Stop();
+        musicSource.Stop();
+        sourceFX.Stop();
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    [SerializeField] private float Duration;
-    [SerializeField] private float Amount;
-    [SerializeField] private bool Shaking = false;
+    [SerializeField] private float duration;
+    [SerializeField] private float amount;
+    [SerializeField] private bool shaking = false;
     
     public void Shake()
     {
@@ -15,28 +15,28 @@ public class CameraShake : MonoBehaviour
 
     private IEnumerator ShakeCam2D()
     {
-        if (Shaking)
+        if (shaking)
         {
             yield return null;
         }
-        Shaking = true;
-        Vector3 OriginalPos = transform.localPosition;
+        shaking = true;
+        Vector3 originalPos = transform.localPosition;
 
         float Elapsed = 0.0f;
 
-        while (Elapsed < Duration)
+        while (Elapsed < duration)
         {
-            float X = Random.Range(-1f, 1f) * Amount;
-            float Y = Random.Range(-1f, 1f) * Amount;
+            float X = Random.Range(-1f, 1f) * amount;
+            float Y = Random.Range(-1f, 1f) * amount;
 
-            transform.position = new Vector3(X, Y, OriginalPos.z);
+            transform.position = new Vector3(X, Y, originalPos.z);
 
             Elapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        transform.localPosition = OriginalPos;
-        Shaking = false;
+        transform.localPosition = originalPos;
+        shaking = false;
     }
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 public class PipeSpawn : MonoBehaviour
 {
 
-    public float MaxTime = 1.5f;
-    public float HeighRange = 0.5f;
-    public GameObject Pipe;
+    public float maxTime = 1.5f;
+    public float HeightRange = 0.5f;
+    public GameObject pipe;
 
-    private float Timer;
+    private float timer;
 
     private void Start()
     {
@@ -20,21 +20,21 @@ public class PipeSpawn : MonoBehaviour
 
     private void Update()
     {
-        if (Timer > MaxTime)
+        if (timer > maxTime)
         {
             SpawnPipe();
-            Timer = 0;
+            timer = 0;
         }
-        Timer += Time.deltaTime;
+        timer += Time.deltaTime;
 
     }
 
     private void SpawnPipe()
     {
-        Vector3 spawnPos = transform.position + new Vector3(0,Random.Range(-HeighRange, HeighRange));
-        GameObject pipe = Instantiate(Pipe, spawnPos, Quaternion.identity);
+        Vector3 spawnPos = transform.position + new Vector3(0,Random.Range(-HeightRange, HeightRange));
+        GameObject pipeObj = Instantiate(pipe, spawnPos, Quaternion.identity);
 
-        Destroy(pipe, 10f);
+        Destroy(pipeObj, 10f);
 
     }
 }

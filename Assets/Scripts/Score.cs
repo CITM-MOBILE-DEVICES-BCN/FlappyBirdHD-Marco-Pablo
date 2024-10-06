@@ -6,8 +6,8 @@ public class Score : MonoBehaviour
 {
     public static Score Instance;
 
-    [SerializeField] private TextMeshProUGUI CurrentScoreText;
-    [SerializeField] private TextMeshProUGUI HighScoreText;
+    [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
 
     private int score;
 
@@ -21,8 +21,8 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-        CurrentScoreText.text = score.ToString();
-        HighScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        currentScoreText.text = score.ToString();
+        highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         UpdateHighScore();
     }
 
@@ -31,14 +31,16 @@ public class Score : MonoBehaviour
         if(score> PlayerPrefs.GetInt("HighScore"))
         {
             PlayerPrefs.SetInt("HighScore", score); 
-            HighScoreText.text =score.ToString();
+            highScoreText.text =score.ToString();
         }
     }
     public void UpdateScore()
     {
         score++;
         AudioManager.instance.PlaySFX("Score");
-        CurrentScoreText.text = score.ToString();
+        currentScoreText.text = score.ToString();
         UpdateHighScore();
+        Debug.Log("Score: " + score);
+        Debug.Log("High Score: " + PlayerPrefs.GetInt("HighScore"));
     }
 }

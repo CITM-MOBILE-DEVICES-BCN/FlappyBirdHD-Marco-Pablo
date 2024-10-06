@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class MovePipe : MonoBehaviour
 {
-    [SerializeField] private float Speed = 0.65f;
-    private FlyBehaviour FlyBehaviour;
+    [SerializeField] private float speed = 0.65f;
+    private FlyBehaviour flyBehaviour;
 
     private void Start()
     {
-        FlyBehaviour = FindObjectOfType<FlyBehaviour>();
+        flyBehaviour = FindObjectOfType<FlyBehaviour>();
     }
     void Update()
     {
-        if (!FlyBehaviour.Dead)
+        if (!flyBehaviour.dead)
         {
-            transform.position += Vector3.left * Speed * Time.deltaTime;
+            transform.position += Vector3.left * speed * Time.deltaTime;
         }
     }
 }

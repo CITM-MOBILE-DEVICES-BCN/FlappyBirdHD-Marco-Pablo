@@ -5,22 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    [SerializeField] private GameObject Canvas;
+    public static GameManager instance;
+    [SerializeField] private GameObject canvas;
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         Time.timeScale = 0.9f;
     }
 
     public void GameOver()
     {
-        Canvas.SetActive(true);
-        Canvas.GetComponent<Animator>().Play("GameOverEnter");
-        if (Canvas.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("GameOverEnter"))
+        canvas.SetActive(true);
+        canvas.GetComponent<Animator>().Play("GameOverEnter");
+        if (canvas.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("GameOverEnter"))
         {
             Time.timeScale = 0;
         }

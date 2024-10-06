@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class LoopGround : MonoBehaviour
 {
-    [SerializeField] private float Speed = 1f;
-    [SerializeField] private float Width = 6f;
+    [SerializeField] private float speed = 1f;
+    [SerializeField] private float width = 6f;
 
-    private SpriteRenderer SpriteRenderer;
+    private SpriteRenderer spriteRenderer;
+    private Vector2 startSize;
 
-    private Vector2 StartSize;
     private void Start()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        StartSize = new Vector2(SpriteRenderer.size.x, SpriteRenderer.size.y);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        startSize = new Vector2(spriteRenderer.size.x, spriteRenderer.size.y);
     }
 
     private void Update()
     {
-        SpriteRenderer.size = new Vector2(SpriteRenderer.size.x + Speed * Time.deltaTime, SpriteRenderer.size.y);
+        spriteRenderer.size = new Vector2(spriteRenderer.size.x + speed * Time.deltaTime, spriteRenderer.size.y);
 
-        if (SpriteRenderer.size.x > Width)
+        if (spriteRenderer.size.x > width)
         {
-            SpriteRenderer.size = StartSize;
+            spriteRenderer.size = startSize;
         }
     }
 
     public void Stop()
     {
-        Speed = 0;
+        speed = 0;
     }
 }

@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259b9d5179cbd674aabb2e326857c21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhiteImage: {fileID: 138709772}
+  whiteImage: {fileID: 138709772}
   flashSpeed: 0.07
 --- !u!1 &144217213
 GameObject:
@@ -959,9 +959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fbfbc1ab6f6d249ac5924cf53a09e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Duration: 0.3
-  Amount: 0.01
-  Shaking: 0
+  duration: 0.1
+  amount: 0.07
+  shaking: 0
 --- !u!1 &495951678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,8 +1214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa529d2c9586edc4fa3db3cf8353d343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentScoreText: {fileID: 495951680}
-  HighScoreText: {fileID: 795527091}
+  currentScoreText: {fileID: 495951680}
+  highScoreText: {fileID: 795527091}
 --- !u!1 &794337341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,18 +1463,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ef42966a066cd428eaec2dd1016e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicSounds:
+  musicSounds:
   - name: Theme
     clip: {fileID: 8300000, guid: b3e5d56daf732864a9ba6b64d47d197e, type: 3}
-  SFXSounds:
+  soundFX:
+  - name: Fly
+    clip: {fileID: 8300000, guid: 742d0defbd8e1a745a8c4a792faa5d77, type: 3}
   - name: Hit
     clip: {fileID: 8300000, guid: 5e0ac6bbe457bb84983e9960082ed8a8, type: 3}
   - name: Score
     clip: {fileID: 8300000, guid: b05f3a36f19db414ba21a9c5b62cc72c, type: 3}
-  - name: Fly
-    clip: {fileID: 8300000, guid: 742d0defbd8e1a745a8c4a792faa5d77, type: 3}
-  MusicSource: {fileID: 82757994}
-  SFXSource: {fileID: 115723409}
+  musicSource: {fileID: 82757994}
+  sourceFX: {fileID: 115723409}
 --- !u!4 &800279831
 Transform:
   m_ObjectHideFlags: 0
@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e4827603875f84cab8968a2d1902c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 91891809}
+  canvas: {fileID: 91891809}
 --- !u!4 &964093256
 Transform:
   m_ObjectHideFlags: 0
@@ -1852,9 +1852,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c241a095bcc09be4e9ad500bca4d6488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTime: 1.5
-  HeighRange: 0.4
-  Pipe: {fileID: 3114135840050176117, guid: abe72609788847f469fe9fcba0447549, type: 3}
+  maxTime: 1.5
+  HeightRange: 0.5
+  pipe: {fileID: 3114135840050176117, guid: abe72609788847f469fe9fcba0447549, type: 3}
 --- !u!4 &1472982469
 Transform:
   m_ObjectHideFlags: 0
@@ -2145,8 +2145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12576fc75b71dc43b2560fef3907e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1.3
-  Width: 6
+  speed: 1.3
+  width: 6
 --- !u!1 &1742165898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,17 +2330,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d0040ec48a9424c833398028f7ce73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PipeSpawner: {fileID: 1472982467}
-  Score: {fileID: 638774788}
+  pipeSpawner: {fileID: 1472982467}
+  score: {fileID: 638774788}
   TapIcon: {fileID: 2096159675}
-  BirdCollider: {fileID: 1742165902}
-  Flash: {fileID: 138709775}
-  CameraShake: {fileID: 260444403}
-  LoopGround: {fileID: 1574172715}
-  Velocity: 2.2
-  Gravity: 10
-  LittleCoolDown: 0.1
-  Dead: 0
+  bridCollider: {fileID: 1742165902}
+  flash: {fileID: 138709775}
+  cameraShake: {fileID: 260444403}
+  loopGround: {fileID: 1574172715}
+  velocity: 2.2
+  gravity: 10
+  littleCooldown: 0.1
+  dead: 0
 --- !u!1 &1887424694
 GameObject:
   m_ObjectHideFlags: 0

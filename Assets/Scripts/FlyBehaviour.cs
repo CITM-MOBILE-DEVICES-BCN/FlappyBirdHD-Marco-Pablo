@@ -7,88 +7,88 @@ using UnityEngine;
 public class FlyBehaviour : MonoBehaviour
 {
     [Header("References")]
-    public GameObject PipeSpawner;
-    public GameObject Score;
+    public GameObject pipeSpawner;
+    public GameObject score;
     public GameObject TapIcon;
-    public Collider2D BirdCollider;
-    public Flash Flash;
-    public CameraShake CameraShake;
-    public LoopGround LoopGround;
+    public Collider2D bridCollider;
+    public Flash flash;
+    public CameraShake cameraShake;
+    public LoopGround loopGround;
 
     [Header("Variables")]
-    [SerializeField] private float Velocity = 1.5f;
-    [SerializeField] private float Gravity = 1.0f;
-    [SerializeField] private float LittleCoolDown = 0.1f;
+    [SerializeField] private float velocity = 1.5f;
+    [SerializeField] private float gravity = 1.0f;
+    [SerializeField] private float littleCooldown = 0.1f;
 
-    private Rigidbody2D Rb;
+    private Rigidbody2D rb;
 
-    private bool StartFlying = true;
-    public bool Dead = false;
+    private bool startFly = true;
+    public bool dead = false;
 
     void Start()
     {
-        Rb = GetComponent<Rigidbody2D>();
-        LittleCoolDown = 0.0f;
-        Rb.gravityScale = 0;
-        PipeSpawner.SetActive(false);
+        rb = GetComponent<Rigidbody2D>();
+        littleCooldown = 0.0f;
+        rb.gravityScale = 0;
+        pipeSpawner.SetActive(false);
         TapIcon.SetActive(true);
-        Score.SetActive(false);
+        score.SetActive(false);
         AudioManager.instance.PlayMusic("Theme");
     }
 
     void Update()
     {
-        if (!StartFlying)
+        if (!startFly)
         {
-            Rb.velocity -= -Gravity * Time.deltaTime * Vector2.down;
+            rb.velocity -= -gravity * Time.deltaTime * Vector2.down;
             TapIcon.SetActive(false);
-            PipeSpawner.SetActive(true);
-            Score.SetActive(true);
+            pipeSpawner.SetActive(true);
+            score.SetActive(true);
         }
 
-        if (Input.GetMouseButtonDown(0) && !Dead)
+        if (Input.GetMouseButtonDown(0) && !dead)
         {
             AudioManager.instance.PlaySFX("Fly");
             
-            if (LittleCoolDown <= 0)
+            if (littleCooldown <= 0)
             {
-                Rb.velocity = Vector2.up * Velocity;
-                StartFlying = false;
-                LittleCoolDown = 0.1f;
+                rb.velocity = Vector2.up * velocity;
+                startFly = false;
+                littleCooldown = 0.1f;
             }
         }
 
-        LittleCoolDown -= Time.deltaTime;
+        littleCooldown -= Time.deltaTime;
 
-        if (Rb.velocity.y > 0)
+        if (rb.velocity.y > 0)
         {
-            float DesiredAngle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, 27, 0.5f);
-            transform.rotation = Quaternion.Euler(0, 0, DesiredAngle);
+            float desiredAngle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, 27, 0.5f);
+            transform.rotation = Quaternion.Euler(0, 0, desiredAngle);
         }
-        else if (Rb.velocity.y < 0)
+        else if (rb.velocity.y < 0)
         {
-            float DesiredAngle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, -90, Time.deltaTime * 3.5f);
-            transform.rotation = Quaternion.Euler(0, 0, DesiredAngle);
+            float desiredAngle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, -90, Time.deltaTime * 3.5f);
+            transform.rotation = Quaternion.Euler(0, 0, desiredAngle);
         }
 
         Mathf.Clamp(transform.rotation.z, -90, 27);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Dead = true;
+        dead = true;
 
-        BirdCollider.enabled = false;
+        bridCollider.enabled = false;
 
-        Rb.velocity = Vector2.zero;
-        Rb.AddForce(Vector2.up * 0.3f, ForceMode2D.Impulse);
-        Rb.AddForce(Vector2.right * 0.2f, ForceMode2D.Impulse);
+        rb.velocity = Vector2.zero;
+        rb.AddForce(Vector2.up * 0.3f, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.right * 0.2f, ForceMode2D.Impulse);
 
         transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1.3f, 1.3f, 1.3f), 0.2f);
 
-        Flash.FlashScreen();
-        CameraShake.Shake();
-        LoopGround.Stop();
-        PipeSpawner.SetActive(false);
+        flash.FlashScreen();
+        cameraShake.Shake();
+        loopGround.Stop();
+        pipeSpawner.SetActive(false);
 
         AudioManager.instance.PlaySFX("Hit");
         
@@ -97,6 +97,6 @@ public class FlyBehaviour : MonoBehaviour
 
     private void Restart()
     {        
-        GameManager.Instance.GameOver();
+        GameManager.instance.GameOver();
     }
 }

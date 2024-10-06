@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Flash : MonoBehaviour
 {
-    public CanvasGroup WhiteImage;
+    public CanvasGroup whiteImage;
     public float flashSpeed = 0.1f;
 
     void Start()
     {
-        WhiteImage.alpha = 0;
+        whiteImage.alpha = 0;
     }
 
     [ContextMenu("Flash Screen")]
@@ -20,8 +20,8 @@ public class Flash : MonoBehaviour
 
     private IEnumerator FlashScreenCoroutine()
     {
-        WhiteImage.alpha = 1;
+        whiteImage.alpha = 1;
         yield return new WaitForSeconds(flashSpeed);
-        WhiteImage.alpha = 0;
+        whiteImage.alpha = 0;
     }
 }
