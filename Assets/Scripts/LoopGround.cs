@@ -18,11 +18,11 @@ public class LoopGround : MonoBehaviour
 
     private void Update()
     {
-        SpriteRenderer.size = new Vector2(SpriteRenderer.size.x+Speed*Time.deltaTime, SpriteRenderer.size.y);
+        SpriteRenderer.size = new Vector2(SpriteRenderer.size.x + Speed * Time.deltaTime, SpriteRenderer.size.y);
 
-        if(SpriteRenderer.size.x> Width)
+        if (SpriteRenderer.size.x > Width)
         {
-            SpriteRenderer.size= StartSize;
+            SpriteRenderer.size = StartSize;
         }
     }
 
