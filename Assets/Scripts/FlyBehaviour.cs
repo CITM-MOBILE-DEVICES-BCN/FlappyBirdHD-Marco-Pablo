@@ -46,7 +46,7 @@ public class FlyBehaviour : MonoBehaviour
             score.SetActive(true);
         }
 
-        if (Input.GetMouseButtonDown(0) && !dead)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && !dead)
         {
             AudioManager.instance.PlaySFX("Fly");
             
