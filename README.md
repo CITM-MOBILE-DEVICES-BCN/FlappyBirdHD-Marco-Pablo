@@ -1,3 +1,5 @@
+IMPORTANT: MUST SET ASPECT RATIO 9:16
+
 Flappy Bird HD
 
 Made by
